@@ -9,9 +9,9 @@ const NavbarItem = () => {
             <Navbar bg="light">
                 <Container>
                     <Row>
-                            <Link to='/'><Navbar.Brand>Home</Navbar.Brand></Link>
-                            <Link to='/about'><Navbar.Brand>About</Navbar.Brand></Link>
-                            <Link to='/career'><Navbar.Brand>Career</Navbar.Brand></Link>
+                        <Link to='/'><Navbar.Brand>Home</Navbar.Brand></Link>
+                        <Link to='/about'><Navbar.Brand>About</Navbar.Brand></Link>
+                        <Link to='/career'><Navbar.Brand>Career</Navbar.Brand></Link>
                     </Row>
                 </Container>
             </Navbar>

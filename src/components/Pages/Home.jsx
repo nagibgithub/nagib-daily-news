@@ -1,8 +1,9 @@
+import Button from 'react-bootstrap/Button';
 
 const Home = () => {
     return (
         <div>
-            this is home            
+            <Button>Button</Button>
         </div>
     );
 };

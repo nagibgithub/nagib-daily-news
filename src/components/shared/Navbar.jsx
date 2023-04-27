@@ -2,7 +2,7 @@ import {faCircleUser} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {Button, Col, Row} from 'react-bootstrap';
 import Container from 'react-bootstrap/Container';
-import {NavLink} from 'react-router-dom';
+import {Link, NavLink} from 'react-router-dom';
 
 const NavbarItem = () => {
     return (
@@ -17,7 +17,7 @@ const NavbarItem = () => {
                     </Col>
                     <Col lg={4} className='text-end'>
                         <FontAwesomeIcon className='text-secondary mx-2' size='2xl' icon={faCircleUser} />
-                        <Button variant="secondary">Log In</Button>
+                        <Link to={'/log/login'}><Button variant="secondary">Log In</Button></Link>
                     </Col>
                 </Row>
             </Container>

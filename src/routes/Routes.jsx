@@ -6,6 +6,7 @@ import Career from "../components/Pages/Career";
 import Login from "../components/LoginSignin/Login";
 import LoginRoute from "../components/LoginSignin/LoginRoute";
 import SignUp from "../components/LoginSignin/SignUp";
+import Category from "../components/Pages/Category";
 
 const router = createBrowserRouter([
     {
@@ -14,7 +15,8 @@ const router = createBrowserRouter([
         children: [
             {
                 path: "/",
-                element: <Home></Home>
+                element: <Home></Home>,
+                loader: () => fetch('http://localhost:3000/news'),
             },
             {
                 path: "/about",
@@ -23,7 +25,12 @@ const router = createBrowserRouter([
             {
                 path: "/career",
                 element: <Career></Career>
-            }
+            },
+            {
+                path: "/category/:id",
+                element: <Category></Category>,
+                loader: ({params}) => fetch(`http://localhost:3000/categories/${params.id}`)
+            },
         ]
     },
     {

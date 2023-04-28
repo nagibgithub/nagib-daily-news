@@ -1,9 +1,15 @@
-import Button from 'react-bootstrap/Button';
+import {useLoaderData} from 'react-router-dom';
+import NewsCard from './NewsCard';
 
 const Home = () => {
+
+    const allNews = useLoaderData()
+
     return (
         <div >
-            <Button>Button</Button>
+            {
+                allNews.map(pd => <NewsCard></NewsCard>)
+            }
         </div>
     );
 };

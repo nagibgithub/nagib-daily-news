@@ -1,8 +1,13 @@
+import NavCategory from "./NavCategory";
 
 const LeftNav = () => {
+
     return (
         <div>
-            this is left Nav
+            <h4>All Category</h4>
+            <div className="d-flex flex-column">
+                <NavCategory></NavCategory>
+            </div>
         </div>
     );
 };

@@ -2,3 +2,7 @@
     margin: 0px;
     padding: 0px;
 }
+
+.category-list:hover {
+    background-color: rgb(146, 146, 146);
+}

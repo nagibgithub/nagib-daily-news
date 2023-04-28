@@ -8,6 +8,7 @@ import LoginRoute from "../components/LoginSignin/LoginRoute";
 import SignUp from "../components/LoginSignin/SignUp";
 import Category from "../components/Pages/Category";
 import NewsDetails from "../components/Pages/NewsDetails";
+import NewsLayout from "../components/News/NewsLayout";
 
 const router = createBrowserRouter([
     {
@@ -33,6 +34,12 @@ const router = createBrowserRouter([
                 element: <Category></Category>,
                 loader: ({params}) => fetch(`http://localhost:3000/categories/${ params.id }`)
             },
+        ]
+    },
+    {
+        path: "/news",
+        element: <NewsLayout></NewsLayout>,
+        children: [
             {
                 path: "/news/:id",
                 element: <NewsDetails></NewsDetails>,

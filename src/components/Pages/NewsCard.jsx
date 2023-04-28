@@ -1,6 +1,7 @@
 import moment from "moment/moment";
-import {Button, Card, CardImg, Col, Row} from "react-bootstrap";
-import {FaBookmark, FaShareAlt} from 'react-icons/fa';
+import {Card, Col, Row} from "react-bootstrap";
+import {FaBookmark, FaEye, FaRegStar, FaShareAlt, FaStar, FaStarHalf, FaStarHalfAlt} from 'react-icons/fa';
+import Rating from "react-rating";
 import {Link} from "react-router-dom";
 
 const NewsCard = ({news}) => {
@@ -9,7 +10,7 @@ const NewsCard = ({news}) => {
     // const logId = useParams()
     // console.log(logId.id);
 
-    const sliceNews = news.details.slice(0, 200)
+    // const sliceNews = news.details.slice(0, 200)
 
     return (
         <div className="mb-4">
@@ -35,15 +36,27 @@ const NewsCard = ({news}) => {
                     <Card.Title className="text-start">{news.title}</Card.Title>
                     <img className="card-main-image" src={news.image_url} alt="" />
                     <Card.Text className="text-start">
-                        <p>
-                            {sliceNews}. . . <Link to={`/news/${news._id}`} className="text-warning">Read More</Link>
-                        </p>
+                        {
+                            news.details.length < 200 ? <>{news.details}</> : <>{news.details.slice(0, 200)}... <Link to={`/news/${ news._id }`}>Read More</Link> </>
+                        }
                     </Card.Text>
                 </Card.Body>
                 <Card.Footer className="text-muted">
                     <Row>
-                        <Col className="text-start">start</Col>
-                        <Col className="text-end">end</Col>
+                        <Col className="text-start d-flex align-items-center">
+                            <Rating
+                                placeholderRating={news.rating.number}
+                                emptySymbol={<FaRegStar />}
+                                placeholderSymbol={<FaStar />}
+                                fullSymbol={<FaStar />}
+                                readonly
+                            />
+                            <div className="">{news.rating.number}</div>
+                        </Col>
+                        <Col className="text-end">
+                            <FaEye />
+                            {news.total_view}
+                        </Col>
                     </Row>
                 </Card.Footer>
             </Card>

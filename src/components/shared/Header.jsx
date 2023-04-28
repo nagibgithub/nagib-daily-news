@@ -1,9 +1,7 @@
 import moment from "moment/moment";
 import Marquee from "react-fast-marquee";
 import NavbarItem from "./Navbar";
-import {useState} from "react";
 import {Link} from "react-router-dom";
-
 
 const Header = ({allNews}) => {
 
@@ -22,7 +20,9 @@ const Header = ({allNews}) => {
                     }
                 </Marquee>
             </div>
+            <hr />
             <NavbarItem></NavbarItem>
+            <hr />
         </div>
     );
 };

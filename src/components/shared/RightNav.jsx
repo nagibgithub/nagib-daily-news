@@ -5,10 +5,10 @@ import ListGroup from 'react-bootstrap/ListGroup';
 const RightNav = () => {
     return (
         <div>
-            <div className='my-4'>
+            <div className='mb-4'>
                 <h4>Login With</h4>
-                <Button variant="outline-primary" className='w-12'><FaGoogle /> Login with Google</Button>
-                <Button variant="outline-secondary"><FaGithub /> Login with Github</Button>
+                <Button variant="outline-primary" className='login-button'><FaGoogle /> Login with Google</Button>
+                <Button variant="outline-secondary" className='login-button'><FaGithub /> Login with Github</Button>
             </div>
             <div className='my-4'>
                 <h4>Find Us</h4>

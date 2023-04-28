@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react";
-import {Link, useParams} from "react-router-dom";
+import {Link, NavLink, useParams} from "react-router-dom";
 
 const NavCategory = () => {
     const [newsCategory, setNewsCategory] = useState([]);
@@ -13,7 +13,12 @@ const NavCategory = () => {
     return (
         <div className="d-flex flex-column">
             {
-                newsCategory.map(pd => <Link key={pd.id} to={`/category/${pd.id}`} className="text-decoration-none py-2 text-secondary category-list">{pd.name}</Link>)
+                newsCategory.map(pd => <NavLink key={pd.id} to={`/category/${ pd.id }`} className={({isActive, isPending}) =>
+                    isActive
+                        ? "category-list text-decoration-none bg-primary text-white"
+                        : isPending
+                            ? "category-list text-decoration-none"
+                            : "category-list text-decoration-none"}>{pd.name}</NavLink>)
             }            
         </div>
     );

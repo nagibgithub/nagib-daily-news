@@ -10,6 +10,7 @@ import Category from "../components/Pages/Category";
 import NewsDetails from "../components/Pages/NewsDetails";
 import NewsLayout from "../components/News/NewsLayout";
 import PrivateRoute from "./PrivateRoute";
+import TermsCondition from "../components/Pages/TermsCondition";
 
 const router = createBrowserRouter([
     {
@@ -59,6 +60,10 @@ const router = createBrowserRouter([
             {
                 path: '/log/signup',
                 element: <SignUp></SignUp>
+            },
+            {
+                path: '/log/terms_condition',
+                element: <TermsCondition></TermsCondition>
             }
         ]
     }

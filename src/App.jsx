@@ -8,18 +8,9 @@ import {useEffect, useState} from "react";
 
 const App = () => {
 
-  const [allNews, setAllNews] = useState([]);
-
-  useEffect(() => {
-    fetch('http://localhost:3000/news/')
-      .then(res => res.json())
-      .then(data => setAllNews(data))
-      .catch(error => console.log(error.message))
-  }, [])
-
   return (
     <div>
-      <Header allNews={allNews}></Header>
+      <Header></Header>
       <Container>
         <Row>
           <Col lg={2}><LeftNav></LeftNav></Col>

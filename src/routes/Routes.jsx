@@ -16,12 +16,12 @@ const router = createBrowserRouter([
     {
         path: "/",
         element: <App></App>,
-        loader: () => fetch('http://localhost:3000/news'),
+        loader: () => fetch('https://local-server-nodemon-nagibgithub.vercel.app/news'),
         children: [
             {
                 path: "/",
                 element: <Home></Home>,
-                loader: () => fetch('http://localhost:3000/news'),
+                loader: () => fetch('https://local-server-nodemon-nagibgithub.vercel.app/news'),
             },
             {
                 path: "/about",
@@ -34,7 +34,7 @@ const router = createBrowserRouter([
             {
                 path: "/category/:id",
                 element: <Category></Category>,
-                loader: ({params}) => fetch(`http://localhost:3000/categories/${ params.id }`)
+                loader: ({params}) => fetch(`https://local-server-nodemon-nagibgithub.vercel.app/categories/${ params.id }`)
             },
         ]
     },
@@ -45,7 +45,7 @@ const router = createBrowserRouter([
             {
                 path: "/news/:id",
                 element: <PrivateRoute><NewsDetails></NewsDetails></PrivateRoute>,
-                loader: ({params}) => fetch(`http://localhost:3000/news/${ params.id }`)
+                loader: ({params}) => fetch(`https://local-server-nodemon-nagibgithub.vercel.app/news/${ params.id }`)
             }
         ]
     },

@@ -10,7 +10,7 @@ const NewsLayout = () => {
     const [allNews, setAllNews] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:3000/news/')
+        fetch('')
             .then(res => res.json())
             .then(data => setAllNews(data))
             .catch(error => console.log(error.message))

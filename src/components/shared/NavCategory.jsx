@@ -3,9 +3,8 @@ import {Link, NavLink, useParams} from "react-router-dom";
 
 const NavCategory = () => {
     const [newsCategory, setNewsCategory] = useState([]);
-    
     useEffect(() => {
-        fetch('http://localhost:3000/categories')
+        fetch('https://local-server-nodemon-nagibgithub.vercel.app/categories')
             .then(res => res.json())
             .then(data => setNewsCategory(data))
             .catch(error => console.log(error.message))

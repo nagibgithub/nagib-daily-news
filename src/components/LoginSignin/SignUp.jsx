@@ -16,14 +16,14 @@ const SignUp = () => {
         const email = form.email.value;
         const password = form.password.value;
 
-        // creatUser(email, password)
-        //     .then(result => {
-        //         const createdUser = result.user;
-        //         console.log(createdUser);
-        //     })
-        //     .catch(error => {
-        //         console.log(error);
-        //     })
+        creatUser(email, password)
+            .then(result => {
+                const createdUser = result.user;
+                console.log(createdUser);
+            })
+            .catch(error => {
+                console.log(error);
+            })
     }
 
     const handleAccepted = event => {

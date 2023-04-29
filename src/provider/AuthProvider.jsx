@@ -1,8 +1,6 @@
 import {createContext, useEffect, useState} from "react";
 import {createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut} from "firebase/auth"
 import app from "../firebase/firebase.config";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faSpinner} from "@fortawesome/free-solid-svg-icons";
 
 export const AuthContext = createContext(null)
 

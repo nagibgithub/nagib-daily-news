@@ -2,8 +2,16 @@ import moment from "moment/moment";
 import Marquee from "react-fast-marquee";
 import NavbarItem from "./Navbar";
 import {Link} from "react-router-dom";
+import {useEffect, useState} from "react";
 
-const Header = ({allNews}) => {
+const Header = () => {
+    const [allNews, setAllNews] = useState([]);
+    useEffect(() => {
+        fetch('https://local-server-nodemon-nagibgithub.vercel.app/news')
+            .then(res => res.json())
+            .then(data => setAllNews(data))
+            .catch(error => console.log(error.message))
+    }, [])
 
     const todayPic = allNews.filter(pd => pd.others_info.is_todays_pick === true)
 

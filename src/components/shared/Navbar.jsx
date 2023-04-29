@@ -8,8 +8,13 @@ import {AuthContext} from '../../provider/AuthProvider';
 
 const NavbarItem = () => {
 
-    const {user} = useContext(AuthContext)
+    const {user, logOut} = useContext(AuthContext)
+    console.log(user);
     // console.log(user);
+
+    const handleLogOut = () => {
+        logOut()
+    }
 
 
     return (
@@ -25,11 +30,11 @@ const NavbarItem = () => {
                     <Col lg={4} className='text-end'>
                         {
                             user ?
-                                <h6>{user.displayName} <span><Link><Button variant="secondary">Log Out</Button></Link></span></h6>
+                                <h6>{user.email} <span><Button onClick={handleLogOut} variant="secondary">Log Out</Button></span></h6>
                                 :
                                 <>
                                     <FontAwesomeIcon className='text-secondary mx-2' size='2xl' icon={faCircleUser} />
-                                    <h6><span><Link to={'/log/login'}><Button variant="secondary">Log In</Button></Link></span></h6>
+                                    <Link to={'/log/login'}><Button variant="secondary">Log In</Button></Link>
                                 </>
                         }
                     </Col>

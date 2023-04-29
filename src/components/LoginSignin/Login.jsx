@@ -1,33 +1,59 @@
+import {useContext} from "react";
 import {Button, Container, Form} from "react-bootstrap";
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
+import {AuthContext} from "../../provider/AuthProvider";
 
 const Login = () => {
+
+    const navigate = useNavigate()
+
+    const {signIn} = useContext(AuthContext)
+
+    const handleLogIn = event => {
+        event.preventDefault()
+        const form = event.target;
+        const email = form.email.value;
+        const password = form.password.value;
+        console.log(email, password);
+
+        signIn(email, password)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                console.log(errorCode, errorMessage);
+            });
+        
+        navigate('/')
+    }
+
+
     return (
         <Container className="">
             <h1 className="text-center">Login your account</h1>
-            <Form className="mx-5">
+
+
+            <Form onSubmit={handleLogIn} className="mx-5">
+
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Email address</Form.Label>
-                    <Form.Control type="email" placeholder="Enter email" />
-                    <Form.Text className="text-muted">
-                        We'll never share your email with anyone else.
-                    </Form.Text>
+                    <Form.Control name="email" type="email" placeholder="Enter email" />
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formBasicPassword">
                     <Form.Label>Password</Form.Label>
-                    <Form.Control type="password" placeholder="Password" />
+                    <Form.Control name="password" type="password" placeholder="Password" />
                 </Form.Group>
-                {/* <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                    <Form.Check type="checkbox" label="Agree with all Terms and Conditions" />
-                </Form.Group> */}
-                <Button variant="primary" type="submit">
-                    Log In
-                </Button>
-                <p>
-                If you new, Plz <Link to={"/log/signup"}>Sign Up</Link>
-                </p>
+
+                <Button variant="primary" name="submit" type="submit">Log In</Button>
+
             </Form>
+
+
+            <p className="text-center">If you new, Plz <Link to={"/log/signup"}>Sign Up</Link></p>
         </Container>
     );
 };

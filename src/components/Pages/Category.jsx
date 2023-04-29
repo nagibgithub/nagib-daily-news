@@ -10,7 +10,7 @@ const Category = () => {
         <div>
             <h6>: {categoryNews.length}</h6>
             {
-                categoryNews.map(pd => <NewsCard key={pd.id} news={pd}></NewsCard>)
+                categoryNews.map(pd => <NewsCard key={pd._id} news={pd}></NewsCard>)
             }
         </div>
     );

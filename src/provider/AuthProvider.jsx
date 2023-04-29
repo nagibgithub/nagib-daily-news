@@ -1,6 +1,8 @@
 import {createContext, useEffect, useState} from "react";
 import {createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut} from "firebase/auth"
 import app from "../firebase/firebase.config";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faSpinner} from "@fortawesome/free-solid-svg-icons";
 
 export const AuthContext = createContext(null)
 
@@ -8,30 +10,34 @@ const auth = getAuth(app)
 
 const AuthProvider = ({children}) => {
 
-    const [user, setUser] = useState(null)
+    const [user, setUser] = useState(null);
+    const [loading, setLoading] = useState(true)
 
     const creatUser = (email, password) => {
+        setLoading(true);
         return createUserWithEmailAndPassword(auth, email, password)
     }
 
     const signIn = (email, password) => {
+        setLoading(true);
         return signInWithEmailAndPassword(auth, email, password)
     }
 
     const logOut = () => {
+        setLoading(true);
         signOut(auth)
             .then(() => {
             })
             .catch((error) => {
                 console.log(error);
             });
-
     }
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (loggedUser) => {
-            console.log(loggedUser);
+            // console.log(loggedUser);
             setUser(loggedUser);
+            setLoading(false);
         })
 
         return () => {
@@ -43,6 +49,7 @@ const AuthProvider = ({children}) => {
 
     const authInfo = {
         user,
+        loading,
         creatUser,
         signIn,
         logOut
